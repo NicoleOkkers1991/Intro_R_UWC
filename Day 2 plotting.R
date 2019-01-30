@@ -68,4 +68,18 @@ plot4
 
 plot_combined <- ggarrange(plot_1, plot_2, plot3, plot4) # install package ggpubr and then use the ggarrange to combine all of the plots
 
+# third Library
+library(boot)
 
+Urine <- boot::urine # Assigning a name to the data set so that it shows up in the environment
+??Urine # use the help function to understand the data a bit more
+
+Urine %>%
+  select(-cond) # This is the command to remove a collumn ; in this case, the conductivity collumn was removed
+
+ggplot(data = urine, aes(x = osmo, y = ph)) +
+  geom_point(aes(colour = cond)) # command to create a scatter plot graph. The scale (colour variation) helps you to compare
+
+ggplot(data = urine, aes(x = osmo, y = ph)) +
+  geom_point(aes(colour = as.factor(r)))
+N

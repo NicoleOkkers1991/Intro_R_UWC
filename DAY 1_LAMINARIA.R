@@ -91,7 +91,7 @@ Lam_3 <- Lam %>%
 
 library(tidyverse)
 Lam_3 <- Lam %>% 
-  mutate(total_length_half = (total_length/2)) %>% 
+  mutate(total_length_half = (total_length/2)) %>%  # answer to question 1
   na.omit %>% 
   filter(total_length_half>100) %>% 
   select(site, total_length_half) 
