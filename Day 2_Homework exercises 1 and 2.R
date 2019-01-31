@@ -96,7 +96,7 @@ Plot_1L # This Facetted graph can tell us about the Thallus mass and total lengt
 # Hypothesis for graph 2: The thallus_mass is directly proportional to the total length
 
 Plot_2L <- ggplot(data = Lam, aes(x = thallus_mass, y = total_length)) +
-  geom_point(shape = 21, colour = "Green", fill = "white") +
+  geom_point(shape = 21, colour = "Green", fill = "white") + # assigning colours to the graph
   geom_smooth(method = 'lm') + # Adding the line of best fit to show the general trend
   labs(x = "thallus mass (kg)", y = "total length (cm)")
 Plot_2L
