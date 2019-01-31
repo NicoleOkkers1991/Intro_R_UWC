@@ -77,4 +77,30 @@ Plot_R2  # This Graph shows that as the perimeter increases, the permeability al
 # Hypothesis for graph 2 : 
 
 
+# Exercise two: Laminaria Data set
+# Graph 1 for Laminaria data set
+# Load Libraries
+library(tidyverse)
+Lam <- read_csv("data/laminaria.csv") # Read the CSV file for laminaria
+
+# Create faceted figure
+
+Plot_1L <- ggplot(data = Lam, aes(x = thallus_mass, y = total_length, colour = site)) +
+  geom_point() +
+  geom_smooth(method = "lm") + # Note the `+` sign here
+  facet_wrap(~site, ncol = 2) + # This is the line that creates the facets
+  labs(x = "Mass (g)", y = "Length (cm)")
+Plot_1L # This Facetted graph can tell us about the Thallus mass and total length ratios at each site of this dataset
+
+# Graph 2 for the Laminaria data set
+# Hypothesis for graph 2: The thallus_mass is directly proportional to the total length
+
+Plot_2L <- ggplot(data = Lam, aes(x = thallus_mass, y = total_length)) +
+  geom_point(shape = 21, colour = "Green", fill = "white") +
+  geom_smooth(method = 'lm') + # Adding the line of best fit to show the general trend
+  labs(x = "thallus mass (kg)", y = "total length (cm)")
+Plot_2L
+
+
+
 
