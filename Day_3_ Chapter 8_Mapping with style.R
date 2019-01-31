@@ -37,3 +37,21 @@ sa_2 <- sa_1 +
            angle = 330,
            colour = "peachpuff2")
 sa_2
+
+# Scale Bars
+# Scale bar function is not a fixed function...so you can play around with the numbers until scale workd with map
+sa_3 <- sa_2 + # Assing map sa_2 to Sa_3---sa_2 is kind of a parent line
+  scalebar(x.min = 32, x.max = 26, y.min = -34, y.max = -35, # Set location of bar
+           dist = 200, height = 1, st.dist = 0.8, st.size = 4, # Set particulars
+           dd2km = TRUE, model = "WGS84") + # Set appearance
+  north(x.min = 22.5, x.max = 25.5, y.min = -33, y.max = -31, # Set location of symbol
+        scale = 1.2, symbol = 16)
+sa_3
+
+# Insetting Maps
+sa_4 <- sa_3 +
+  annotation_custom(grob = ggplotGrob(africa_map), # Always use this code to inset
+                    xmin = 20.9, xmax = 26.9, # If you wanna shift postition of the inset, just play with the coordinates
+                    ymin = -30, ymax = -24)
+sa_4
+

@@ -46,7 +46,7 @@ Plot_4 # This is also not the greatest graph to use to represent this data
 
 # For the second graph, I produced four graphs for practice and not all of the graphs 'worked'
 
-# Dataset 2 :
+# Dataset 2 : Rock
 # Calculate the mean of 1 collumn
 datasets::rock # Download dataset 'rock"
 ??rock # Help function to understand data
@@ -74,7 +74,43 @@ Plot_R2  # This Graph shows that as the perimeter increases, the permeability al
 # For graph 1, I produced 2 graphs because the firat graph gave me an error. 
 
 # Graph 2 : Rock dataset
-# Hypothesis for graph 2 : 
+# Hypothesis for graph 2 : The permeability of each core sample will decrease as the area of each sample increases, this is an inversely proportional relationship
+Rock <- datasets::rock # Adding the data set to the environment pain by assiging it a name
+Plot_R3 <- ggplot(data = Rock, aes(x = area , y = perm)) +
+  geom_point(shape = 21, colour = "orangered4", fill = "white") + # assigning colours to the graph
+  geom_smooth(method = 'lm') + # Adding the line of best fit to show the general trend
+  labs(x = "Area (cm^2)", y = "permeability (units)") + # Adding lables
+  ggtitle( "Graph showing the area to permeability ratio at each core sample")
+Plot_R3
+# From the graph, it can be seen that the hypothesis is accepted
+
+
+# Dataset 3 : Cars
+# Calculate the mean of 1 collumn
+datasets::cars # Download dataset 'cars"
+Cars <- datasets::cars
+??cars # Help to have a better understanding of the dataset
+Cars %>%  # Choosing the dataframe
+  summarise(avg_speed = mean(speed)) # Command to calculate the mean of the Speed collumn
+
+# Create two Graphs for the Cars Data Set
+# Graph 1 of the Cars dataset
+# Hypothesis for Graph 1C : The speed of the cars will increase as the distance increases- This is a directly proportional relationship
+plot_1C <- ggplot(Cars, aes(x = dist, y = speed)) + 
+  geom_point() +
+  geom_smooth(method = "lm") + # Adding the line of best fit
+  labs(x = "Distance (ft)" , y = "speed (mph)") +
+ggtitle("Graph showing Distance Versus Speed")
+plot_1C
+# The map shows that the hypothesis is accepted
+
+# Graph 2 for the Cars dataset
+# Hypothesis for Graph 3: 
+Plot_2C <- ggplot(data = Cars, aes(x = dist , y = speed)) +
+  geom_boxplot(aes(group = dist)(fill = speed)) + # this is the command to produce a boxplot
+  labs(x = "Distance (ft)", y = "Speed (mph") +
+  ggtitle("Box Plot to show the relationship between the distance and speed of cars")
+Plot_2c # Error with this code...Relook and try to understand
 
 
 # Exercise two: Laminaria Data set
