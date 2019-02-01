@@ -18,5 +18,5 @@ save(Lam,file = "data/laminaria.RData") # Converting from CSV to RData
 # Answer: The library(ggsn) is a package in R that is used to create North symbols and scale bars for maps. These symbols are created using "ggplot" and "ggmap" commands.
       # : The package adds north symbols (there are 18 North Symbol Options), and scale bars (units = Km) to maps, using metric or geographic coordinates.
       # : This is done using the commands "ggplot" and "ggmap" 
-      # : The library(scales) is a package in R that is used to create scales using values to for maps. ( Relook at this answer)
+      # : The library(scales) is a package in R that is used to create scales using values to for maps. ( Relook
       # : Graphical scales are used to map data to aesthetics, as well as provide methods for automatically determining breaks and labels for axes and legends. This is the purpose of the scales package       

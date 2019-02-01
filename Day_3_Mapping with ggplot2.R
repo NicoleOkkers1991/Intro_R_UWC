@@ -94,7 +94,7 @@ final_map <- ggplot(data = south_africa_coast, aes(x = lon, y = lat)) +
         legend.text = element_text(size = 7), # Change text size in legend
         legend.title = element_text(size = 7), # Change legend title text size
         legend.key.height = unit(0.3, "cm"), # Change size of legend
-        legend.background = element_rect(colour = "white"), # Add legend background
+        legend.background = element_rect(colour = "white"), #  this is how to Add legend background
         legend.justification = c(1, 0), # Change position of legend
         legend.position = c(0.55, 0.4)) # Fine tune position of legend
 final_map
