@@ -54,3 +54,7 @@ SACTN4_tidy <- left_join(SACTN4a_tidy, SACTN4b_tidy) # left_join Technique is th
 # R arranged two data sets this way: R> Joining, by = c("site", "src", "date"), resulting in one large data set
 
 
+# [A.A]
+# Sjoh! Nice commenting
+# Nicely done, neat script
+# Shows good understanding

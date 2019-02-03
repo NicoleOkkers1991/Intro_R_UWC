@@ -95,3 +95,10 @@ Lam_3 <- Lam %>%
   na.omit %>% 
   filter(total_length_half>100) %>% 
   select(site, total_length_half) 
+
+#[A.A]
+# script runs complete
+# Nice and neat script
+# Great form of commmenting
+# Could add some comments in the larger chuncks on code for future reference 
+# Nicely done

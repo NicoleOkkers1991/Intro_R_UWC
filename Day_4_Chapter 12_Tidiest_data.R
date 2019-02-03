@@ -65,3 +65,9 @@ SACTN %>%
   group_by(site, src) %>%
   summarise(mean_temp = mean(temp, na.rm = TRUE),
             sd_temp = sd(temp, na.rm = TRUE))
+
+# [A.A]
+# Neatly organised
+# Nice work
+# Tried new/ different things
+# Nicely done

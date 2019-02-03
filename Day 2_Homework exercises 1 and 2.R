@@ -138,5 +138,10 @@ Plot_2L <- ggplot(data = Lam, aes(x = thallus_mass, y = total_length)) +
 Plot_2L
 
 
+# [A.A]
+# Sjoh, only person to try different things when plotting, Nicely done
+# Neat script, great comments
+# NIce
+
 
 

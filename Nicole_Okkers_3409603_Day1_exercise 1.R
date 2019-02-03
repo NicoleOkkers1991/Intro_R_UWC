@@ -14,4 +14,7 @@ temp2 <- temp %>%
   dplyr::group_by(site, month) %>% 
   dplyr::summarise(temp = mean(temp, na.rm = TRUE)) %>% 
   ungroup()
+
+# Neat
+# Lack of comments
   

@@ -102,7 +102,10 @@ final_map
 ggsave(plot = final_map, "data/map_complete.pdf", height = 6, width = 9) # This is how to save the map in files
 
 
-
+# [A.A]
+# script runs 
+# MOre comments may be added to the script
+# Neat script
 
 
 
