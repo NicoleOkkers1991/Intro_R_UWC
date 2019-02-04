@@ -22,9 +22,13 @@ load("data/rast_aug.RData")
 
 # Exploring the data set / Examine the data set: 
 # Use commands "head and tail" to examine the data set, this helps you make sure that there are no errors in your data set
-head(rast_aug) # shows first 6 rows
+head(rast_feb) # shows first 6 rows
 tail(rast_feb) # shows last 6 rows
+head(rast_aug) # shows first 6 rows
+tail(rast_aug) # shows last 6 rows
 head(rast_aug, n = 50) # Shows First 50 rows
+tail(rast_aug, n = 50) # Shows Last 50 rows
+head(rast_feb, n = 50) # Shows First 50 rows
 tail(rast_feb, n = 50) # Shows Last 50 rows
 
 # Exploring the data set / Examine the data set:
@@ -46,6 +50,11 @@ ncol(rast_feb) # How many collumns in this data set
 
 # Exploring the data set / Examine the data set:
 # using the "any()" command to check the existence of particukar data
+attach(rast_aug) # Attach allows you to refer to any variable by name
+any(season == "lat") # Does the season collumn appear in the lat collumn? No it doesn't...this is another way to explore the data, with the "any" function
+attach(rast_feb) # Attach allows you to refer to any variable by name
+any(lon == "season") # Is the longitude collumn found in the season collumn?...FALSW (No)
+
 # Come back and finish this section... you saved the website go and check it our
 
 # Create a map using the variables lat and long
@@ -53,6 +62,8 @@ ncol(rast_feb) # How many collumns in this data set
 library(ggpubr) # Libraries we use to plot maps
 
 Map_aug <- rast_aug # assign the data set you are plotting
+Sea_Surface_Temp_aug <- rast_aug %>% # Removing the index collumn from the data set in order to create the sea surface layer
+  select(-index)
 
 ggplot(data = rast_aug, aes(x = lon, y = lat)) + # This is not a good way to creat a map, a polygon is better to use to show a landmass
   geom_point() # Plotting the points/ coordinates for the lat and long variables. It is better to show this as a polygon though, so that it can create a "shape"
@@ -81,7 +92,7 @@ ggplot(data = rast_aug, aes(x = lon, y = lat)) +
 # Adding Ocean Temeperature
 ggplot(data = rast_aug, aes(x = lon, y = lat)) +
   # The next line is the new part of the code that adds the ocean temperature
-  geom_raster(data = rast_aug, aes(fill = bins)) + # The ocean temperatures # sst data will give the temp of the ocean # Bin- temperatures will fall within the bin 
+  geom_raster(data = Sea_Surface_Temp_aug, aes(fill = bins)) + # The ocean temperatures # sst data will give the temp of the ocean # Bin- temperatures will fall within the bin 
   geom_polygon(colour = "mintcream", fill = "aliceblue", aes(group = season)) +
   geom_path(data = sa_provinces, aes(group = group)) + # Use the province data to draw the borders of the provinces
   coord_equal(xlim = c(16, 33), ylim = c(-35, -26.5), expand = 0) 
@@ -92,8 +103,8 @@ col_rast_aug <- c("#55DAD6" , "#52C9CC" , "#50B8C1" , "#4FA8B6" , "#4E97A9" , "#
 
 # What the map looks like with the colour pallete:
 ggplot(data = rast_aug, aes(x = lon, y = lat)) +
-  geom_raster(data = rast_aug, aes(fill = bins)) + # filling in the data for the temperatures
-  geom_polygon(colour = "mintcream", fill = "aliceblue", aes(group = season)) + # Outline must be dark (Polygon gives me an outline)
+  geom_raster(data = rast_aug, aes(fill = bins)) # Try and take out the temp collumn and use only that data. + # filling in the data for the temperatures
+  geom_polygon(colour = "mintcream", fill = "aliceblue", aes(group = season)) + # change the bins or something # Outline must be dark (Polygon gives me an outline)
   geom_path(data = sa_provinces, aes(group = group)) +
   scale_fill_manual("Temp. (°C)", values = col_rast_aug) + # Set the colour palette # Created a pallet earlier on, just reuse that code. Ran the colls_rast_aug already/ Function: Scale_fill manual
   coord_equal(xlim = c(16, 33), ylim = c(-35, -26.5), expand = 0)

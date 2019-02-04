@@ -32,7 +32,7 @@
 # Here create a graph showing temperature variation between sites
 # Select all the temperatures recorded at the site Port Nolloth during August or September.
 # Select all the monthly temperatures recorded in Port Nolloth during the year 1994
-# Calculate the average temperature by depth
+# Calculate the average temperature by depth (Maybe by site)
 # Work through the tidyverse section within the document. Show what you have done by creating comments/ notes throughout the script
 
 # Section 4: open section (Can make your own data set)
