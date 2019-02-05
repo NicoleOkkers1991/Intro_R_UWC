@@ -56,7 +56,7 @@ Line_graph <- ggplot(data = Ecklonia_1, aes(x = stipe_mass, y = epiphyte_length)
   ggtitle("Graph showing the relationship between Stipe Mass and Epiphyte Length" ) +
   theme_gray() # Playing around with the themes, used the'gray' one
 Line_graph
-# Answer Hypotheses
+# The graphs shows for some that as stipe mass increases, the epiphyte kength increases
 
 # Graph 2 : 
 # Bar graph
@@ -67,6 +67,7 @@ Bar_graph <- ggplot(data = Ecklonia_1 , aes(fill = "Primary Blade Length"))+ # u
   ggtitle("Bar Graph showing the size of the primary blade width of algae species, Ecklonia Maxima at two different locations") + # adding a title to the graph
   theme_classic() # I will be using the classic theme for this graph. 
 Bar_graph
+# The size of the primary blade width is larger at the Batsata Rock compared to the Boulder's beach site
 
 # Graph 3: Box Plot
 # Hypothesis for graph 3: I hypothesis that there will be a difference bewteen frond length and frond mass of Ecklonia maxima at the two different sites; Boulders beach and Batsata rock
@@ -76,6 +77,7 @@ Box_plot <- ggplot(data = Ecklonia_1, aes(x = frond_mass , y = frond_length )) +
   ggtitle("Box Plot to show relationship between the Frond Mass and the Frond Length of the species, Ecklonia maxima, at two different sites, Boulders beach and Batsata rock ") + # adding a title to the box plot
   theme_get() # Trying out the "get" theme for this graph
 Box_plot 
+# There is a difference between fromd length and frond mass at the two different sites
 
 # Using thed Ggarrange function to arrange graphs into one plot
 # Load Library 'ggpubr'
