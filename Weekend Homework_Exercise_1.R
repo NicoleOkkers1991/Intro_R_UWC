@@ -60,10 +60,10 @@ any(lon == "season") # Is the longitude collumn found in the season collumn?...F
 # Create a map using the variables lat and long
 # Load libraries needed to plot maps
 library(ggpubr) # Libraries we use to plot maps
+library(scales)
+library(ggsn)
 
 Map_aug <- rast_aug # assign the data set you are plotting
-Sea_Surface_Temp_aug <- rast_aug %>% # Removing the index collumn from the data set in order to create the sea surface layer
-  select(-index)
 
 ggplot(data = rast_aug, aes(x = lon, y = lat)) + # This is not a good way to creat a map, a polygon is better to use to show a landmass
   geom_point() # Plotting the points/ coordinates for the lat and long variables. It is better to show this as a polygon though, so that it can create a "shape"
@@ -92,7 +92,7 @@ ggplot(data = rast_aug, aes(x = lon, y = lat)) +
 # Adding Ocean Temeperature
 ggplot(data = rast_aug, aes(x = lon, y = lat)) +
   # The next line is the new part of the code that adds the ocean temperature
-  geom_raster(data = Sea_Surface_Temp_aug, aes(fill = bins)) + # The ocean temperatures # sst data will give the temp of the ocean # Bin- temperatures will fall within the bin 
+  geom_raster(data = rast_aug, aes(fill = bins)) + # The ocean temperatures # sst data will give the temp of the ocean # Bin- temperatures will fall within the bin 
   geom_polygon(colour = "mintcream", fill = "aliceblue", aes(group = season)) +
   geom_path(data = sa_provinces, aes(group = group)) + # Use the province data to draw the borders of the provinces
   coord_equal(xlim = c(16, 33), ylim = c(-35, -26.5), expand = 0) 
@@ -102,9 +102,66 @@ ggplot(data = rast_aug, aes(x = lon, y = lat)) +
 col_rast_aug <- c("#55DAD6" , "#52C9CC" , "#50B8C1" , "#4FA8B6" , "#4E97A9" , "#4C879B" , "#4A788D") # Using the links in the course reader in order to make a colour pallete for the map
 
 # What the map looks like with the colour pallete:
-ggplot(data = rast_aug, aes(x = lon, y = lat)) +
-  geom_raster(data = rast_aug, aes(fill = bins)) # Try and take out the temp collumn and use only that data. + # filling in the data for the temperatures
+rast_aug_map <- ggplot(data = rast_aug, aes(x = lon, y = lat)) +
+  geom_raster(data = rast_aug, aes(fill = bins)) + # Try and take out the temp collumn and use only that data. + # filling in the data for the temperatures
   geom_polygon(colour = "mintcream", fill = "aliceblue", aes(group = season)) + # change the bins or something # Outline must be dark (Polygon gives me an outline)
   geom_path(data = sa_provinces, aes(group = group)) +
   scale_fill_manual("Temp. (°C)", values = col_rast_aug) + # Set the colour palette # Created a pallet earlier on, just reuse that code. Ran the colls_rast_aug already/ Function: Scale_fill manual
-  coord_equal(xlim = c(16, 33), ylim = c(-35, -26.5), expand = 0)
+  coord_equal(xlim = c(16, 33), ylim = c(-35, -26.5), expand = 0) +
+    labs( x = "Longitude" , y = "lattitude") + # Adding lables to the map, assigning x and y axis
+  scale_x_continuous(position = "bottom") + # Put the X axis at the bottom
+    annotate("text", label = "Atlantic\nOcean", # Using coordinates and colour to make lables of oceans # /n means you want a new line, so that there is a space between Atlantic and Ocean
+                       x = 15, y = -33.5, # the specs for the labels for Atlantic Ocean
+                       size = 4.5,
+                       angle = 31,
+                       colour = "royalblue1") +
+    annotate("text", label = "Indian\nOcean", # Adding the Indian Ocean lable
+             x = 30, y = -33.9, # Specs for the lable
+             size = 4.5,
+             angle = 340,
+             colour = "plum") +
+    scalebar(x.min = 23, x.max = 27, y.min = -34.5, y.max = -35.5, # Set location of bar
+             dist = 201, height = 1.5, st.dist = 0.7, st.size = 1.5, # Set particulars
+             dd2km = TRUE, model = "WGS84") + # Set appearance
+    north(x.min = 23.5, x.max = 26.5, y.min = -32, y.max = -31.5, # Set location of symbol
+          scale = 1.3, symbol = 16.5) +
+  ggtitle("Map showing the Sea Surface temperatures around the South African Coast for the month of August")
+rast_aug_map # Saving the  final Map
+
+
+# Graph for the feb data
+col_rast_feb <- c("#48B4B6" , "#3EA49F" , "#379488" , "#328573" , "#2F755F" , "#2C654D" , "#28563D", "#24472E")
+# Using the links in the course reader in order to make a colour pallete for the map
+rast_feb_map <- ggplot(data = rast_feb, aes(x = lon, y = lat)) +
+  geom_raster(data = rast_feb, aes(fill = bins)) + # Try and take out the temp collumn and use only that data. + # filling in the data for the temperatures
+  geom_polygon(colour = "mintcream", fill = "aliceblue", aes(group = season)) + # change the bins or something # Outline must be dark (Polygon gives me an outline)
+  geom_path(data = sa_provinces, aes(group = group)) +
+  scale_fill_manual("Temp. (°C)", values = col_rast_feb) + # Set the colour palette # Created a pallet earlier on, just reuse that code. Ran the colls_rast_aug already/ Function: Scale_fill manual
+  coord_equal(xlim = c(15, 34), ylim = c(-36, -26), expand = 0) +
+  labs( x = "Longitude" , y = "lattitude") + # Adding lables to the map, assigning x and y axis
+  scale_x_continuous(position = "top") + # Put the X axis at the bottom
+  annotate("text", label = "Atlantic\nOcean", # Using coordinates and colour to make lables of oceans # /n means you want a new line, so that there is a space between Atlantic and Ocean
+           x = 16, y = -31, # the specs for the labels for Atlantic Ocean
+           size = 2.5,
+           angle = 32,
+           colour = "royalblue1") +
+  annotate("text", label = "Indian\nOcean", # Adding the Indian Ocean lable
+           x = 30, y = -33.9, # Specs for the lable
+           size = 4.5,
+           angle = 340,
+           colour = "plum") +
+  scalebar(x.min = 23, x.max = 27, y.min = -34.5, y.max = -35.5, # Set location of bar
+           dist = 201, height = 0.5, st.dist = 0.7, st.size = 1, # Set particulars
+           dd2km = TRUE, model = "WGS84") + # Set appearance
+  north(x.min = 24, x.max = 26, y.min = -33, y.max = -32, # Set location of symbol
+        scale = 1.3, symbol = 16.5) +
+  ggtitle("Map showing the Sea Surface temperatures around the South African Coast for the month of February")
+rast_feb_map # Saving the  final Map
+
+# I will use the feb map and inset it into the aug map
+Insetted_MAP <-  rast_aug_map +
+annotation_custom(grob = ggplotGrob(rast_feb_map), # Always use this code to inset
+                  xmin = 18.5, xmax = 27.5, # If you wanna shift postition of the inset, just play with the coordinates
+                  ymin = -33.5, ymax = -28.5)
+Insetted_MAP
+
