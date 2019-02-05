@@ -61,7 +61,7 @@ Plot_1_ex4
 # Load libraries
 # Density Plot
 library(ggplot2)
-Plot_2_ex4 <- ggplot(data = Iris_data , aes( x= Sepal.Length,)) +
+Plot_2_ex4 <- ggplot(data = Iris_data , aes( x= Sepal.Length)) +
   geom_density() +
 labs ( x = "Sepal Length (cm)" , y = "Density" ) + # Adding X and Y axis lables to the graph
   ggtitle("Density plot for the sepal length of the Iris data set") + # adding a title to the graph
