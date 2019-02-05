@@ -121,7 +121,7 @@ rast_aug_map <- ggplot(data = rast_aug, aes(x = lon, y = lat)) +
              angle = 340,
              colour = "plum") +
     scalebar(x.min = 23, x.max = 27, y.min = -34.5, y.max = -35.5, # Set location of bar
-             dist = 201, height = 1.5, st.dist = 0.7, st.size = 1.5, # Set particulars
+             dist = 201, height = 0.5, st.dist = 0.7, st.size = 1.5, # Set particulars
              dd2km = TRUE, model = "WGS84") + # Set appearance
     north(x.min = 23.5, x.max = 26.5, y.min = -32, y.max = -31.5, # Set location of symbol
           scale = 1.3, symbol = 16.5) +
