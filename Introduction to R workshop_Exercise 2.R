@@ -12,6 +12,16 @@ load("data/SACTNmonthly_v4.0.RData") # Load the SACTNmonthly_v4.0 data set
 SACTN <- SACTNmonthly_v4.0 # Assing a name to the data frame so that it shows up in the environment
 
 # Explore Data set
+head(SACTN) # shows first 6 rows
+tail(SACTN) # shows last 6 rows
+head(SACTN, n = 60 ) # Shows First 7 rows
+tail(SACTN, n = 60) # Shows Last 7 rows
+glimpse(SACTN) # Glimpse helps you list the variables in your data frame # Listing varibales in the rast_feb data frame
+names(SACTN) # only looking at the name of the variables (collumns)
+nrow(SACTN) # How man rows in this data set
+ncol(SACTN) # How many collumns in this data set
+dim(SACTN) # To show dimensions for the data frame
+summary(SACTN) # Overall summary of the data set, to make sure that R has read the data set properly
 
 SACTN_1 <- SACTNmonthly_v4.0 %>%  # Assinging a new name to the data frame
 filter(src == "KZNSB" ) %>% # use the pipe function because we ae coding and not plotting. # This command is filtering out the collumn we need, in this case; KZNSB
@@ -38,14 +48,26 @@ LAM <- read_csv("data/laminaria.csv") # Load data as well as assigning it a name
 LAM_False_bay_PLOT_A <- LAM %>%  # telling R which data set to use and assigning a name
   filter( region == "FB") # Filter command to filter out the data for the false bay regions
 
-LAM_False_bay_PLOT_A <- ggplot(LAM_False_bay_PLOT_A, aes(x = blade_length, y = blade_weight, colour = site)) +
-  scale_color_brewer(palette = "Set1") + # The scale_color_brewer has set palletes, that only have 8 codes for a colour, this data set needs a palette with 9 colours
+# Exploring the dat set:
+head(LAM) # shows first 6 rows
+tail(LAM) # shows last 6 rows
+head(LAM, n = 30 ) # Shows First 7 rows
+tail(LAM, n = 30) # Shows Last 7 rows
+glimpse(LAM) # Glimpse helps you list the variables in your data frame # Listing varibales in the rast_feb data frame
+names(LAM) # only looking at the name of the variables (collumns)
+nrow(LAM) # How man rows in this data set
+ncol(LAM) # How many collumns in this data set
+dim(LAM) # To show dimensions for the data frame
+summary(LAM) # Overall summary of the data set, to make sure that R has read the data set properly
+
+LAM_False_bay_PLOT_A_1 <- ggplot(LAM_False_bay_PLOT_A, aes(x = blade_length, y = blade_weight, colour = site)) +
+  scale_color_brewer(palette = "Accent") + # The scale_color_brewer has set palletes, that only have 8 codes for a colour, this data set needs a palette with 9 colours
   geom_point() + # Command to plot points to draw a graph
   geom_line() + # Comman to plot graph
   facet_wrap(~site, ncol = 3) + # Facet_wrap command to combine the different graphs. note that there are 3 collumns, according to AJ's dat
   labs(x = "Blade_Length (cm)", y = "Blade_Mass (kg)") + # command to add labels to the graph
   ggtitle(" A crazy graph for some data for False Bay sites") # adding titles to the 
-LAM_False_bay_PLOT_A
+LAM_False_bay_PLOT_A_1
 
 # The last graph for Roman Rock does not display. This is because the scale_color_brewer has a set palette for only 8 colours. This data set needs 9 colours. This is the problem.
 # I am going to create my own colour palette, using the link in the course reader and use that as the colour palette
@@ -61,10 +83,19 @@ LAM_False_bay_PLOT_B <- ggplot(LAM_False_bay_PLOT_A, aes(x = blade_length, y = b
                                  ggtitle("A crazy graph for some data for False Bay sites") # Adding a graph title
 LAM_False_bay_PLOT_B # Final Plot
 
+LAM_Graph_A <- annotate_figure(LAM_False_bay_PLOT_A_1, # Command to annotate the graph
+                               top = text_grob("A", color = "maroon" , # Specifying which colour to annotate in
+                                               face = "bold" , size = 12)) # Specs for annotation
+                               
+LAM_Graph_B <- annotate_figure(LAM_False_bay_PLOT_B, # Command to annoate the second graph
+                               top = text_grob("B" , color = "hotpink1" , # Specifying colour for annotation
+                                               face = "bold" , size = 12)) # Specifying colour and font for annotation
+                                               
 # Load Libraries
 library(ggpubr) # Need this library for ggarrange command
-plot_Combined <- ggarrange(LAM_False_bay_PLOT_A, LAM_False_bay_PLOT_B) # install package ggpubr and then use the ggarrange to combine all of the plots
+plot_Combined <- ggarrange(LAM_Graph_A, LAM_Graph_B) # install package ggpubr and then use the ggarrange to combine all of the plots
 plot_Combined # Shows all three graphs combined 
+
 
 # Part 3
 # Tooth Growth Data
@@ -74,6 +105,19 @@ Tooth_Growth_data <- datasets::ToothGrowth %>% # loading the built-in data set T
             Standard_dev_length = sd(len)) # calculating standard deviation
 Tooth_Growth_data
 
+# Exploring data
+head(Tooth_Growth_data) # shows first 6 rows
+tail(Tooth_Growth_data) # shows last 6 rows
+head(Tooth_Growth_data, n = 2 ) # Shows First 7 rows
+tail(Tooth_Growth_data, n = 2) # Shows Last 7 rows
+glimpse(Tooth_Growth_data) # Glimpse helps you list the variables in your data frame # Listing varibales in the rast_feb data frame
+names(Tooth_Growth_data) # only looking at the name of the variables (collumns)
+nrow(Tooth_Growth_data) # How man rows in this data set
+ncol(Tooth_Growth_data) # How many collumns in this data set
+dim(Tooth_Growth_data) # To show dimensions for the data frame
+summary(Tooth_Growth_data) # Overall summary of the data set, to make sure that R has read the data set properly
+
+
 Tooth_Growth_Plot <- ggplot(Tooth_Growth_data, aes( x= dose, y = mean_length, fill = supp)) + # usinh ggplot to plot the collumn graph. This is probably a collumn that has standard error bars
 geom_col(aes(fill= supp), position = "dodge", colour = "firebrick4") + # command to plot a collumn bar
   geom_errorbar(aes(ymin = mean_length - Standard_dev_length, # Error bars added using command geom_errorbar
@@ -82,6 +126,8 @@ geom_col(aes(fill= supp), position = "dodge", colour = "firebrick4") + # command
   labs( x = "Dose (mg/d)", y = "Length of Tooth (mm)") + # Adding Labels to the graph
   ggtitle("Graph showing the rate bewteen vitamin c dosages and tooth length")
 Tooth_Growth_Plot
+
+# END
 
 
 
