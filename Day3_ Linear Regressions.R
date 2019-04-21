@@ -73,3 +73,9 @@ ggplot(data = rand.df, aes(x = x, y = y)) +
        subtitle = "Linear regression",
        x = "X (independent variable)",
        y = "Y (dependent variable)")
+
+# Neat scripts
+# Good comments
+# Maybe while you are working on your scripts you can add a bit of the discriptions when AJ discusses or interprets the findings
+# This may not be as important now but for quantitative ecology most of your marks will be gained by interpretations
+# So a question worth 10 marks: 8marks interpretations and 2marks code

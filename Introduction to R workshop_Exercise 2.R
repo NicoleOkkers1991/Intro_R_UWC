@@ -118,7 +118,7 @@ dim(Tooth_Growth_data) # To show dimensions for the data frame
 summary(Tooth_Growth_data) # Overall summary of the data set, to make sure that R has read the data set properly
 
 
-Tooth_Growth_Plot <- ggplot(Tooth_Growth_data, aes( x= dose, y = mean_length, fill = supp)) + # usinh ggplot to plot the collumn graph. This is probably a collumn that has standard error bars
+Tooth_Growth_Plot <- ggplot(Tooth_Growth_data, aes(x= dose, y = mean_length, fill = supp)) + # usinh ggplot to plot the collumn graph. This is probably a collumn that has standard error bars
 geom_col(aes(fill= supp), position = "dodge", colour = "firebrick4") + # command to plot a collumn bar
   geom_errorbar(aes(ymin = mean_length - Standard_dev_length, # Error bars added using command geom_errorbar
                 ymax = mean_length + Standard_dev_length), # setting ymax and ymin
