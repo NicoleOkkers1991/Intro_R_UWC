@@ -298,3 +298,4 @@ iris.long %>%
   facet_wrap(~variable, labeller = labeller(variable = facet.names)) +
   labs(y = "Size (mm)", title = "A box plot...", subtitle = "...of the Iris data") +
   theme(axis.text.x = element_text(face = "italic"))
+

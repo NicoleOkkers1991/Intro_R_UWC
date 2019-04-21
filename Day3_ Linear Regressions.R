@@ -8,7 +8,7 @@
 library(tidyverse)
 library(ggplot2)
 
-# Explore data set
+# Explore datac set
 head(faithful)
 
 #Linear Model

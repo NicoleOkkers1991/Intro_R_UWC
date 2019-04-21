@@ -220,7 +220,7 @@ prop.test(Lions, alternative = "two.sided")
 # The Springbok is a bit less than the Eland
 prop.test(Lions, alternative = "less")
 
-# The Springbok is a bit more than the Eland
+# The Springbok is a bit more than the Elandc
 prop.test(Lions, alternative = "greater")
 
 # T_test analysis

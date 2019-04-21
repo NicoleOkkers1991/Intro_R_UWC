@@ -30,7 +30,7 @@ cor.test(x = ecklonia$stipe_length, ecklonia$frond_length, #this is the code alw
 ecklonia_pearson <- cor(ecklonia_sub)
 ecklonia_pearson
 
-# Spearman rank correlation
+# Spearman rank correlation c 
 # Create ordinal data
 ecklonia$length <- as.numeric(cut((ecklonia$stipe_length+ecklonia$frond_length), breaks = 3))
 
