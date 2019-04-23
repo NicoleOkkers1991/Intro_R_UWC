@@ -36,7 +36,7 @@ filter(src == "KZNSB" ) %>% # use the pipe function because we ae coding and not
 SACTN_Final_plot <- ggplot(data = SACTN_1, aes(x = year , y = Average_temp)) + # ggplot command to plot the graph for the SACTN_1 data set
   geom_line(aes(group = site), colour = "yellowgreen") + # command geom_line to create a line graph and grouping the data by sites
   facet_wrap(~site, ncol = 5) +  # There are 5 collumns in AJ's graph, therefore I need facet_wrap with 5 collumns
-  scale_x_discrete(name = "Year", breaks = c(1980, 2000), labels = c("1980", "2000")) + # discrete for X axis because of the non-numeric data entries 
+  scale_x_discrete(name = "Year", breaks = c(1980, 2000), labels = c("1980", "2000")) + # discrete for X axis because of the non-numeric data entries (Displayed as characters)
   scale_y_continuous(name = "Temperature (°C)", breaks = c(20, 22 ,24), labels = c("20", "22", "24"), limits = c(20, 24)) + # Continuous for the y axis because of the numeric values # define the limit according to AJ's graph
   labs( x = "Year", y = "Temperature (°C)") + # Adding lables to the graph
   ggtitle("KZNSB : Series of annual means") # Adding titles to the graph
