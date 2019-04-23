@@ -70,3 +70,8 @@ heatmap(ecklonia_pearson, scale="column",
         Colv = NA, Rowv = NA, col = colour)
 
 
+# Good comments
+# Neat script
+# Sjoe quite impressive for somebody that was not in class
+# Better than some of those that were in class
+# Good comments

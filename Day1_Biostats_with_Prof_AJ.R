@@ -299,3 +299,10 @@ iris.long %>%
   labs(y = "Size (mm)", title = "A box plot...", subtitle = "...of the Iris data") +
   theme(axis.text.x = element_text(face = "italic"))
 
+
+# This script is very neat
+# Shows clear understanding of the content and bits of code
+# With your stats assignment first explore your data, then do the normaility tests and then after that you can decide which statistical tests you should run on the data
+# So it is good to explore the data first as you have done in the first few lines of the script
+# You were not in class when we did the normality and correlation tests
+# So please test for normailty and then decide which statistical tests and graphs to choose

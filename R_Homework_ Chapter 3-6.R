@@ -14,6 +14,11 @@ library(logspline)
 library(plotly)
 
 # Exercise 3.6.1
+
+## Read in the chicks dataset
+chicks <- datasets::ChickWeight # Dont forget to load in this data even though it is still a built in dataset
+
+
 summary(chicks$weight) # Using the summarise function 
 Task_1 <- chicks %>% # Assigning a name 
   filter(Time < 10) %>% 
@@ -42,7 +47,7 @@ Task_2 <- ggplot(data = Orange, aes(x = "", y = age, fill = Tree)) + # Command t
   scale_fill_few()
 Task_2 # Graph 1 for exercise 4.3.1
 
-# Graph 2 
+# Graph 2  # This is cool
 # Using attenu Data set
 datasets::attenu
 Task_3 <- attenu # Assinging name to data set so that it shows up in the environment
@@ -227,3 +232,8 @@ prop.test(Lions, alternative = "greater")
 t.test (data = Lions, var.equal = TRUE, alternative = "greater") # This iis the traditional output
 compare_means(data = Lions, method = "t.test", var.equal = TRUE, alternative = "greater") # Dataframe output
 
+
+
+# Sjoe creative colour variations
+# IMpressive that you tried different things not done in class
+# Cool colour palletts that you could use in the biostats assignment
